@@ -8,7 +8,6 @@ public class Player : InteractableObject
     public override float MovementSpeed { get; set; } = 2.5f;
     
     [SerializeField] private Camera _camera;
-    [SerializeField] private Rigidbody2D _rigidbody2D;
     
     private void Start()
     {
