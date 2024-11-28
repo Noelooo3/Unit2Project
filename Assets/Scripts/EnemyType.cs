@@ -4,8 +4,7 @@ using UnityEngine;
 
 public enum EnemyType
 {
-    Melee,
-    Ranged,
-    Gunner,
-    Exploder,
+    MachineGunEnemy,
+    ShooterEnemy,
+    ExploderEnemy
 }
