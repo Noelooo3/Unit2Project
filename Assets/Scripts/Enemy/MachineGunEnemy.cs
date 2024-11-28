@@ -12,7 +12,6 @@ public class MachineGunEnemy : Enemy
     protected override float _attackRange { get; set; } = 2.0f;
     
     private float _currentRateOfFire = 0.2f;
-    private float _test = 100f;
 
     public override void Attack()
     {
