@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : InteractableObject, IDamageable
+public class Player : InteractableObject
 {
     public override float MovementSpeed { get; set; } = 50f;
     
@@ -33,8 +33,13 @@ public class Player : InteractableObject, IDamageable
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
-    public void OnTakeDamage(int damage)
+    public override void OnTakeDamage(int damage)
     {
         _health.TakeDamage(damage);
+    }
+    
+    public override void Die()
+    {
+        Debug.Log("Player is dead");
     }
 }
