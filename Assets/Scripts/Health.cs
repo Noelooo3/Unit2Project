@@ -10,4 +10,10 @@ public class Health
         MaxHealth = maxHealth;
         CurrentHealth = currentHealth;
     }
+    
+    public void TakeDamage(int damage)
+    {
+        CurrentHealth -= damage;
+        Debug.Log(CurrentHealth);
+    }
 }
