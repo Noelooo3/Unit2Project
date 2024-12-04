@@ -36,8 +36,10 @@ public abstract class Enemy : InteractableObject
         _target = FindObjectOfType<Player>();
     }
 
-    public override void OnTakeDamage(int damage)
+    public override void OnTakeDamage(int damage, int score)
     {
+        GameManager._instance._scoreManager.AddScore(score);
+        Debug.Log("score: " + score);
         Die();
     }
 

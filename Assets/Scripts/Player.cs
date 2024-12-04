@@ -11,6 +11,10 @@ public class Player : InteractableObject
     [SerializeField] private Rigidbody2D _rigidbody2D;
     
     private float _angleOffset = -90f;
+
+    [SerializeField] private Weapon _weapon;
+
+    public static Action<float> OnHealthChanged;
     
     private void Start()
     {
@@ -20,6 +24,7 @@ public class Player : InteractableObject
     public override void Attack()
     {
         Debug.Log("Player is attacking");
+        _weapon.Fire(transform.up);
     }
 
     public override void Move(Vector2 direction, Vector2 lookDirection)
@@ -33,13 +38,22 @@ public class Player : InteractableObject
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
-    public override void OnTakeDamage(int damage)
+    public override void OnTakeDamage(int damage, int score = 0)
     {
         _health.TakeDamage(damage);
+        OnHealthChanged?.Invoke(_health.CurrentHealth);
     }
     
     public override void Die()
     {
         Debug.Log("Player is dead");
+    }
+
+    public void Update()
+    {
+      if(Input.GetMouseButtonDown(0))
+        {
+            Attack();
+        }
     }
 }

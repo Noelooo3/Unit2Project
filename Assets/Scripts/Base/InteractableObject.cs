@@ -7,6 +7,6 @@ public abstract class InteractableObject : MonoBehaviour, IDamageable
 
     public abstract void Attack();
     public abstract void Move(Vector2 direction, Vector2 lookDirection);
-    public abstract void OnTakeDamage(int damage);
+    public abstract void OnTakeDamage(int damage, int score = 0);
     public abstract void Die();
 }
