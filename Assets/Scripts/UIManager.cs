@@ -7,6 +7,8 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _healthText;
     [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] private TextMeshProUGUI _highestScoreText;
+
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -33,5 +35,10 @@ public class UIManager : MonoBehaviour
     public void UpdateScore(int score)
     {
         _scoreText.text = "Score: " + score;
+    }
+
+    public void UpdateHighestScore(int highestScore)
+    {
+        _highestScoreText.text = "Highest Score: " + highestScore;
     }
 }

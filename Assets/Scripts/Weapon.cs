@@ -6,17 +6,22 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private Bullet _bulletPrefab;
-    [SerializeField] private int _weaponDamage = 5;
-    [SerializeField] private float _weaponVelocity = 3.0f;
+    [SerializeField] private WeaponData data;
     [SerializeField] private string _targetTag = "Enemy";
-    [SerializeField] private int _weaponScore = 10;
-    [SerializeField] private float _expiryTime = 5f;
-    
+
+    private void Start()
+    {
+
+        PlayerPrefs.SetString("Weapon Progress", JsonUtility.ToJson(data));
+
+        string retrievingFromMemoryText = PlayerPrefs.GetString("Weapon Progress");
+        data = JsonUtility.FromJson<WeaponData>(retrievingFromMemoryText);
+
+    }
     public void Fire(Vector2 direction)
     {
-        Bullet bullet = Instantiate(_bulletPrefab, this.transform.position, quaternion.identity);
-        bullet.Initialize(_weaponDamage, _weaponVelocity, _targetTag, _weaponScore, _expiryTime);
+        Bullet bullet = Instantiate(data._bulletPrefab, this.transform.position, quaternion.identity);
+        bullet.Initialize(data._weaponDamage, data._weaponVelocity, _targetTag, data._weaponScore, data._expiryTime);
         bullet.Fire(direction);
     }
 }

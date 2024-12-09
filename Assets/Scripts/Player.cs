@@ -18,7 +18,7 @@ public class Player : InteractableObject
     
     private void Start()
     {
-        _health = new Health(100, 90);
+        _health = new Health(100, 100);
     }
 
     public override void Attack()
@@ -42,11 +42,22 @@ public class Player : InteractableObject
     {
         _health.TakeDamage(damage);
         OnHealthChanged?.Invoke(_health.CurrentHealth);
+
+        if(_health.CurrentHealth <= 0)
+        {
+            Die();
+        }
     }
-    
+    public void OnGetHealth(int health)
+    {
+        _health.GiveHealth(health);
+        OnHealthChanged?.Invoke(_health.CurrentHealth);
+    }
     public override void Die()
     {
         Debug.Log("Player is dead");
+        GameManager._instance.GameOver();
+        Destroy(gameObject);
     }
 
     public void Update()
