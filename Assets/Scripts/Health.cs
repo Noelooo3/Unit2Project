@@ -16,4 +16,10 @@ public class Health
         CurrentHealth -= damage;
         Debug.Log(CurrentHealth);
     }
+
+    public void GiveHealth(int health)
+    {
+        CurrentHealth += health;
+
+    }
 }

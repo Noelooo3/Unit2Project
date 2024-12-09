@@ -20,6 +20,8 @@ public class MachineGunEnemy : Enemy
     
     private void Update()
     {
+        if (!_target) return;
+
         Vector3 playerPosition = _target.transform.position;
         Vector3 enemyPosition = transform.position;
         Vector3 direction = (playerPosition - enemyPosition).normalized;
