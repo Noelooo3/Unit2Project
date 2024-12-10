@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager _instance;
-    // Start is called before the first frame update
 
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private Transform[] _enemySpawns;
@@ -21,6 +20,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -41,5 +41,10 @@ public class GameManager : MonoBehaviour
             Instantiate(_enemyPrefab, _enemySpawns[Random.Range(0, _enemySpawns.Length)].position, Quaternion.identity);
             yield return new WaitForSeconds(interval);
         }
+    }
+
+    public void GameOver()
+    {
+        _scoreManager.UpdateHighestScore();
     }
 }

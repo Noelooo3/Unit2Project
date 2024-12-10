@@ -220,7 +220,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a586ac097bb5e54d8b07f14c0f2dfc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 6c33f26719176aa4b9bf7d4c3922db33, type: 2}
   _bulletPrefab: {fileID: 2889099429774456647, guid: b6dc0464322813e46a796be6ec42ae29, type: 3}
   _weaponDamage: 5
   _weaponVelocity: 3
   _targetTag: Player
+  _weaponScore: 10
+  _expiryTime: 5
