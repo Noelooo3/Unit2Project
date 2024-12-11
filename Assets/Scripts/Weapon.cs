@@ -11,12 +11,12 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
-
         PlayerPrefs.SetString("Weapon Progress", JsonUtility.ToJson(data));
 
         string retrievingFromMemoryText = PlayerPrefs.GetString("Weapon Progress");
-        data = JsonUtility.FromJson<WeaponData>(retrievingFromMemoryText);
-
+        // Fix the error from Lesson 7
+        // data = JsonUtility.FromJson<WeaponData>(retrievingFromMemoryText);
+        JsonUtility.FromJsonOverwrite(retrievingFromMemoryText, data);
     }
     public void Fire(Vector2 direction)
     {
