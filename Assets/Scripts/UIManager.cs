@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
     private void OnGameOver()
     {
         _finalScoreText.text = "Score: " + GameManager._instance._scoreManager.CurrentScore;
+        _highestScoreText.text = "Highest Score: " + GameManager._instance._scoreManager.HighestScore;
         
         _inGameUI.SetActive(false);
         _gameOverUI.SetActive(true);
