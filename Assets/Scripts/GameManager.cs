@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform[] _enemySpawns;
     [SerializeField] private float _spawnInterval = 1.0f;
     public ScoreManager _scoreManager;
+    
+    public Action OnGameOver;
+    
     void Awake()
     {
         if(_instance == null)
@@ -46,5 +51,6 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         _scoreManager.UpdateHighestScore();
+        OnGameOver?.Invoke();
     }
 }

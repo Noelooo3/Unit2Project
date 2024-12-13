@@ -30,8 +30,6 @@ public class ScoreManager : MonoBehaviour
             PlayerPrefs.SetInt("DATA", HighestScore);
 
         }
-
-        _onHighestScoreUpdate.Invoke(_highestScore);
     }
 
     public int CurrentScore
