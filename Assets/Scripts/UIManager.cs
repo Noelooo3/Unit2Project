@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
         if (GameManager._instance?._scoreManager != null)
         {
             GameManager._instance._scoreManager._onScoreChanged.AddListener(UpdateScore);
-            GameManager._instance.OnGameOver += OnGameOver;
+            GameManager._instance.OnGameOverListener += OnGameOver;
         }
     }
 

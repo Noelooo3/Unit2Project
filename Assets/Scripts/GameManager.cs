@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _spawnInterval = 1.0f;
     public ScoreManager _scoreManager;
     
-    public Action OnGameOver;
+    // Maybe use an UnityEvent is better?
+    public Action OnGameOverListener;
     
     void Awake()
     {
@@ -51,6 +52,12 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         _scoreManager.UpdateHighestScore();
-        OnGameOver?.Invoke();
+        
+        // if (OnGameOverListener != null)
+        // {
+        //     OnGameOverListener.Invoke();
+        // }
+        
+        OnGameOverListener?.Invoke();
     }
 }
